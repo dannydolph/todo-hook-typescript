@@ -1,5 +1,5 @@
 import React from 'react';
-import uuidv1 from 'uuid/v1';
+import uuid from 'uuid';
 
 
 class App extends React.Component {
@@ -13,17 +13,17 @@ class App extends React.Component {
         {
           status: false,
           text: "1",
-          id: uuidv1()
+          id: uuid()
         },
         {
           status: false,
           text: "2",
-          id: uuidv1()
+          id: uuid()
         },
         {
           status: false,
           text: "3",
-          id: uuidv1()
+          id: uuid()
         },
       ]
     }
@@ -35,22 +35,18 @@ class App extends React.Component {
   }
   addTodo = ()=> {
     this.setState({
-      data: [...this.state.data, {
-        status: false,
-        text: this.state.newTodo,
-        id: uuidv1()
-      }]
+      data: x
     })
   }
   deleteTodo = (t) => {
     this.setState({
-      data: this.state.data.filter(v => v.id != t)
+      data: this.state.data.filter(v => v.id !== t)
     })
   }
   changeTodo = (t) => {
     this.setState({
       data: this.state.data.map(v => {
-        if (v.id == t)
+        if (v.id === t)
           return {
             text: v.text,
             status: !v.status,
